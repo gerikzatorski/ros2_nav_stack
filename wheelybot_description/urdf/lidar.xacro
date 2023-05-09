@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+  <xacro:property name="lidar_radius" value="0.05" />
+  <xacro:property name="lidar_height" value="0.05" />
+  <xacro:property name="lidar_mass" value="0.0" />
+
+  <!-- Laser -->
+  <link name="laser">
+
+    <visual>
+      <geometry>
+        <cylinder length="${lidar_height}" radius="${lidar_radius}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder length="${lidar_height}" radius="${lidar_radius}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${lidar_mass}"/>
+      <inertia
+          ixx="${lidar_mass / 12.0 * lidar_height*lidar_height}" ixy="0.0" ixz="0.0"
+          iyy="0" iyz="0.0"
+          izz="${lidar_mass / 12.0 * lidar_height*lidar_height}"/>
+    </inertial>
+
+  </link>
+
+  <joint name="chassis_to_laser" type="fixed">
+    <parent link="chassis"/>
+    <child link="laser"/>
+    <origin xyz="0 0 ${chassis_height/2 + lidar_height/2}" rpy="0 0 0"/>
+  </joint>
+
+</robot>

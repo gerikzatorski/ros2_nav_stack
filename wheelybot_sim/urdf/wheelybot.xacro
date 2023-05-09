@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wheelybot">
+
+  <!-- Wheelybot description -->
+  <xacro:include filename="$(find wheelybot_description)/urdf/wheelybot.xacro"/>
+
+  <!-- Bring in Gazebo information -->
+  <xacro:include filename="$(find wheelybot_sim)/urdf/wheelybot.gazebo" />
+  <xacro:include filename="$(find wheelybot_sim)/urdf/lidar.gazebo" />
+
+  <!-- Bring in control data -->
+  <xacro:include filename="$(find wheelybot_control)/urdf/ros2_control.xacro" />
+
+</robot>

@@ -1,0 +1,19 @@
+slam_node:
+  ros__parameters:
+    use_sim_time: true
+
+    number_of_particles: 40
+
+    # motion noise
+    alpha0: 0.15  # contribution of rotation to rotation noise
+    alpha1: 0.05  # contribution of translation to rotation noise
+    alpha2: 0.15  # contribution of translation to translation noise
+    alpha3: 0.15  # contribution of rotation to translation noise
+
+    # sensor noise standard deviation
+    sigma: 0.04
+
+    # sensor mixing parameters
+    zhit: 0.8
+    zmax: 0.1
+    zrand: 0.1
